@@ -1,0 +1,7 @@
+---
+import '../styles/site.css';
+const {title,description}=Astro.props.frontmatter ?? Astro.props;
+const canonical=new URL(Astro.url.pathname,Astro.site);
+const image=new URL('/orbital.svg',Astro.site);
+---
+<!doctype html><html lang="es"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>{title} · Cuaderno orbital</title><meta name="description" content={description}/><link rel="canonical" href={canonical}/><meta property="og:type" content="website"/><meta property="og:title" content={`${title} · Cuaderno orbital`}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:image" content={image}/><meta property="og:image:alt" content="Ilustración original de órbitas sobre un cielo azul"/><meta name="twitter:card" content="summary"/>{Astro.site?.hostname === "example.invalid" && <meta name="robots" content="noindex"/>}<link rel="icon" href="/orbital.svg" type="image/svg+xml"/></head><body><a class="skip" href="#contenido">Saltar al contenido</a><header><a class="brand" href="/">Cuaderno <span>orbital</span></a><nav aria-label="Principal"><a href="/">Portada</a><a href="/notas/primera-noche/">Primera noche</a></nav></header><main id="contenido"><slot/></main><footer><span>Observa. Anota. Vuelve.</span><a href="/notas/primera-noche/">Abrir el cuaderno →</a></footer></body></html>
